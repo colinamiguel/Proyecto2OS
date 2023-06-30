@@ -18,6 +18,7 @@ public final class Processor {
     Car[] cars = new Car[2];
     String winners = "";
     main interfase;
+    int speed = 10;
     
     public Processor (main interfase) {
        this.interfase = interfase;
@@ -78,7 +79,7 @@ public final class Processor {
     public void Race () {
         // Add Interface here
         try {
-            Thread.sleep(10000);
+            Thread.sleep(this.speed * 1000);
             float number = rand.nextFloat();
             if (number < 0.4) {
                 this.setWinner();
@@ -97,8 +98,13 @@ public final class Processor {
     public void setWinner() {
         if (this.cars[0].quality > this.cars[1].quality) {
             this.winners += this.admins[0].getCompany() + " " + this.cars[0].id + " Calidad: " + this.cars[0].getStrQuality() + ",";
+            this.admins[0].wins++;
+            this.interfase.setBWins(this.admins[0].wins);
+            
         } else {
             this.winners += this.admins[1].getCompany() + " " + this.cars[1].id + " Calidad: " + this.cars[1].getStrQuality() + ",";
+            this.admins[1].wins++;
+            this.interfase.setLWins(this.admins[1].wins);
         }
         this.interfase.setResult("Ganador");
         this.interfase.setWinner(this.winners);
@@ -122,6 +128,8 @@ public final class Processor {
         for (int i = 0; i < 2; i++) {
             this.admins[i].aftermath();
         }
+        int newSpeed = this.interfase.getSpeed();
+        if (speed > 0) this.speed = newSpeed;
         this.printQueues();
         this.assignRacers();
         this.printQueues();

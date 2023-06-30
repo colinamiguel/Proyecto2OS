@@ -23,14 +23,16 @@ public class Admin {
     int counter = 0;
     int rounds = 0;
     int tiempo;
-    
+    int cars = 0;
+    int wins = 0;
     public Admin(String company) {
         this.company = company;
     }
     
     public void createCars(int number) {
         for (int i = 0; i <= number; i++) {
-            Car newCar = new Car(i);
+            this.cars++;
+            Car newCar = new Car(this.cars);
             this.assignQueue(newCar);
         }
         
