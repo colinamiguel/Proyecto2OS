@@ -43,11 +43,14 @@ public class Car {
     }
 
     public String getStrQuality() {
-        return switch (this.quality) {
-            case 3 -> "Alta";
-            case 2 -> "Media";
-            default -> "Baja";
-        };
+        switch (this.quality) {
+            case 3:
+                return "Alta";
+            case 2:
+                return "Media";
+            default:
+                return "Baja";
+        }       
     }
     
     public int getQuality() {
