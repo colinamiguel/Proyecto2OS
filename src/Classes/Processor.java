@@ -129,7 +129,7 @@ public final class Processor {
             this.admins[i].aftermath();
         }
         int newSpeed = this.interfase.getSpeed();
-        if (speed > 0) this.speed = newSpeed;
+        if (newSpeed > 0) this.speed = newSpeed;
         this.printQueues();
         this.assignRacers();
         this.printQueues();
